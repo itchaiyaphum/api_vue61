@@ -2,7 +2,6 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 app.use(bodyParser.json())
-
 app.use((req, res, next) => {
     var header = { 'Access-Control-Allow-Origin': '*'}
     for (var i in req.headers){
@@ -14,8 +13,6 @@ app.use((req, res, next) => {
     res.set(header)   // แบบใหม่
     next()
 })
-
-
 app.use((req, res, next) =>{
     req.db = require('./lib/db')
     next()
